@@ -70,10 +70,15 @@ src/docparse/
   evaluate.py    # run a system on a split → metrics JSON
   serve.py       # FastAPI service
 tests/           # unit tests for normalization + metrics
-notebooks/       # Kaggle notebooks (training on free T4/P100)
+notebooks/       # Kaggle notebook: zero-shot vs LoRA on a free T4
 ```
 
-## Quickstart
+## Run on Kaggle (free GPU)
+
+Import [`notebooks/kaggle_train.ipynb`](notebooks/kaggle_train.ipynb) into Kaggle (File → Import Notebook → GitHub). Set Accelerator to **GPU T4 x2** and turn Internet **On**, then Run All.
+The notebook checks the metric with oracle/empty runs, evaluates the zero-shot baseline, trains the LoRA adapter, evaluates it, and prints a comparison table and the worst errors. Set `SMOKE = True` for a quick end-to-end check first.
+
+## Quickstart (local)
 
 ```bash
 uv sync --extra train            # or: pip install -e ".[train]"
